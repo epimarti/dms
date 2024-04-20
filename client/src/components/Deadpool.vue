@@ -1,21 +1,25 @@
 <template>
+  <VoteForm />
+  <v-spacer></v-spacer>
+  <v-container fluid>
+    <v-row>
+      <v-col v-for="celebrity of celebrities" :key="celebrity.id" cols="auto" class="align-self-stretch">
 
-    <VoteForm/>
-    
-  <v-container class="d-inline-flex justify-start">
-    <v-card v-for="celebrity of celebrities" :key="celebrity.id" min-width="250px" class="mr-5">
-      <MournRibbon v-if="celebrity.dateOfDeath" />
-      <v-card-item>
-        <template v-slot:append>
-          <v-badge :content="celebrity.votes" inline class="justify-end">
-          </v-badge>
-        </template>
-        <v-card-title>{{ celebrity.name }}</v-card-title>
-      </v-card-item>
-      <v-card-text>
-        <span v-if="celebrity.dateOfDeath">{{ celebrity.dateOfDeath }}</span>
-      </v-card-text>
-    </v-card>
+        <v-card width="300px" height="100px">
+          <MournRibbon v-if="celebrity.dateOfDeath" />
+          <v-card-item>
+            <template v-slot:append>
+              <v-badge :content="celebrity.votes" inline class="justify-end">
+              </v-badge>
+            </template>
+            <v-card-title>{{ celebrity.name }}</v-card-title>
+          </v-card-item>
+          <v-card-text>
+            <span v-if="celebrity.dateOfDeath">{{ celebrity.dateOfDeath }}</span>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 <script>
@@ -27,7 +31,7 @@ export default {
   components: {
     MournRibbon,
     VoteForm
-},
+  },
   data: () => ({
     celebrities: [
       {
@@ -52,6 +56,10 @@ export default {
         name: 'Sean Connery',
         votes: 10,
         dateOfDeath: '31 October 2020'
+      }, {
+        id: 5,
+        name: 'Jeanne Moreau',
+        votes: 10,
       }
     ]
   }),
