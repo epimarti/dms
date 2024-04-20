@@ -60,6 +60,7 @@ export default {
         id: 5,
         name: 'Jeanne Moreau',
         votes: 10,
+        dateOfDeath: '31 July 2017'
       }
     ]
   }),
